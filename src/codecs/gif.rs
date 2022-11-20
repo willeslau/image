@@ -57,7 +57,6 @@ impl<R: Read> GifDecoder<R> {
     /// Creates a new decoder that decodes the input steam `r`
     pub fn new(r: R) -> ImageResult<GifDecoder<R>> {
         let mut decoder = gif::DecodeOptions::new();
-        decoder.set_color_output(ColorOutput::RGBA);
 
         Ok(GifDecoder {
             reader: decoder.read_info(r).map_err(ImageError::from_decoding)?,
